@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html'%}
+
+
+{% block listing %}
+<div class ="contact">
+  <h1>Your search</h1>
+  <form method="post">{% csrf_token %}
+    <label class="form-label" for="{{ form.genre.auto_id }}">{{ form.genre.label }}</label>
+    {{ form.genre }}
+    <label class="form-label" for="{{ form.after_year.auto_id }}">{{ form.after_year.label }}</label>
+    {{ form.after_year }}
+    <label class="form-label" for="{{ form.before_year.auto_id }}">{{ form.before_year.label }}</label>
+    {{ form.before_year }}
+    <label class="form-label" for="{{ form.text.auto_id }}">{{ form.text.label }}</label>
+    {{ form.text }}
+    <label class="form-label" for="{{ form.page.auto_id }}">{{ form.page.label }}</label>
+    {{ form.page }}
+    <div class="form-actions">
+      <button class="btn btn-default" type="submit">Search</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

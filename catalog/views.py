@@ -8,6 +8,7 @@ from django.conf import settings
 
 from .models import Book, Author
 from members.models import Comment
+from .forms import SearchForm
 # Create your views here.
 
 class HomeView(generic.ListView):
@@ -30,19 +31,31 @@ class CatalogView(generic.ListView):
     def get_queryset(self):
         return Book.objects.order_by('-rating').all()
 
-def searchCatalogView(request, page, genre, year, month, order):
-    searched_books = Book.objects.filter(genre=genre,pub_date__year=year, pub_date__month=month ).order_by('-'+order).all()
-    max_page = len(all_books)//25
-    if all_books%25 > 0:
-        max_page+=1
+def searchCatalogView(request):
+    num_res = 0
     page_books = []
-    if page > max_page:
-        raise NoMoreResults
-    elif page == max_page:
-        page_books = searched_books[25*page:25*page+(all_books%25)]
+    if request.method == 'GET':
+        form = SearchForm()
     else:
-        page_books = searched_books[25*page:25*(page+1)]
-    return render(request, "catalog/search.html", {"page_books": page_books})
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            genre = form.cleaned_data['genre']
+            after_year = form.cleaned_data['after_year']
+            before_year = form.cleaned_data['before_year']
+            text = form.cleaned_data['text']
+            page = form.cleaned_data['page']
+            search_list = Book.objects.filter(genre=genre, pub_date__year_gte=after_year, pub_date__year_lte=before_year, title__icontains=text).all() 
+            num_res = len(search_list)
+            max_page = num_res//25
+            if num_res%25 > 0:
+                max_page+=1
+            if page > max_page:
+                raise NoMoreResults
+            elif page == max_page:
+                page_books = searched_list[25*(page-1):25*(page-1)+(all_books%25)]
+            else:
+                page_books = searched_list[25*(page-1):25*page]
+    return render(request, "catalog/search.html", {"form": form, "page_books": page_books, "num_results": num_res})
     
 def bookView(request, book_id):
     """
