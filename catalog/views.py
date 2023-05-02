@@ -14,7 +14,7 @@ class HomeView(generic.ListView):
     """
     View books taht are chosen for the week cover
     """
-    template_name = "collection/home.html"
+    template_name = "catalog/home.html"
     model = Book
 
     def get_queryset(self):
@@ -24,7 +24,7 @@ class CatalogView(generic.ListView):
     """
     View of the catalog
     """
-    template_name = "collection/catalog.html"
+    template_name = "catalog/catalog.html"
     model = Book
 
     def get_queryset(self):
@@ -42,12 +42,12 @@ def searchCatalogView(request, page, genre, year, month, order):
         page_books = searched_books[25*page:25*page+(all_books%25)]
     else:
         page_books = searched_books[25*page:25*(page+1)]
-    return render(request, "colletion/search.html", {"page_books": page_books})
+    return render(request, "catalog/search.html", {"page_books": page_books})
     
 def bookView(request, book_id):
     """
     View for the description of a Book
     """
     b = get_object_or_404(Book, pk=poll_id)
-    return render(request, "collection/book_detail.html", {"book": b})
+    return render(request, "catalog/book_detail.html", {"book": b})
     

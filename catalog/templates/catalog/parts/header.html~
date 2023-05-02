@@ -1,38 +1,20 @@
 {% load static %}
 <head>
   <meta charset="UTF-8">
-  <title>ENFANT PERDU</title>
+  <title>SITE TITLE</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
-  <link rel="shortcut icon" type="image/jpg" href="{% static 'blog/images/favicon.ico'%}">
 </head>
 
 <body>
-  <div id="gif">
-    <div class="gif-galaxy">
-      <img id="gal1" src="{% static 'blog/images/galaxy.gif' %}">
-      <img id="gal2" src="{% static 'blog/images/galaxy.gif' %}">
-      <img id="gal3" src="{% static 'blog/images/galaxy.gif' %}">
-      <!-- <img id="gal4" src="{% static 'blog/images/galaxy.gif' %}"> -->
-    </div>  
-    <div class="gif-moon"></div>
-    <div class="gfs">
-      <div class="gif-surf"></div>
-    </div>
-    <div class="gif-alien"></div>
-  </div>
   <div id="global">
-    <a href="{% url 'accueil' %}"><div id="banner">
+    <a href="{% url 'home' %}"><div id="banner">
     </div></a>
     <div id="page-head">
-      <a href="{% url 'accueil' %}"><div class="home"></div></a>
-      <a href="{% url 'media' %}"><div class="headtxet">MEDIA</div></a>
-      <a href="{% url 'tourdates' %}"><div class="headtext">DATES</div></a>
-      <a href="{% url 'shop' %}"><div class="headtxet">BOUTIQUE</div></a>
-      <a href="{% url 'contact' %}"><div class="headtext">CONTACT</div></a>      
+      <a href="{% url 'home' %}"><div class="headtext">Home</div></a>
+      <a href="{% url 'catalog' %}"><div class="headtext">Books</div></a>
     </div>
 
 

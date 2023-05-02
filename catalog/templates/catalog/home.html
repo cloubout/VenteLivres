@@ -1,10 +1,10 @@
 {% extends 'catalog/base.html' %}
 
 {% block listing %}
-{% if book_list %}
+{% if object_list %}
   <h2>Books of the week</h2>
   <ul>
-  {% for book in book_list %}
+  {% for book in object_list %}
     <li>{{book.title}}</li>
   {% endfor %}
   </ul>
