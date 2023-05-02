@@ -1,0 +1,16 @@
+{% extends 'catalog/base.html' %}
+
+{% block listing %}
+{% if book_list %}
+  <h2>Books of the week</h2>
+  <ul>
+  {% for book in book_list %}
+    <li>{{book.title}}</li>
+  {% endfor %}
+  </ul>
+
+<p>Hello World !</p>
+{% endif %}
+{% endblock %}
+
+
