@@ -1,0 +1,26 @@
+    <div id="page-ft">
+      {% load static %}
+	<a href="https://www.instagram.com/enfantperduperdu/" target="_blank">
+	  <img class="social-media-icon" src="{% static 'blog/images/instagram.png' %}">
+	</a>
+	<a href="https://www.facebook.com/enfantperduu/" target="_blank">
+	  <img class="social-media-icon2" src="{% static 'blog/images/facebook.png' %}">
+	</a>
+	<a href="https://open.spotify.com/artist/0qjYxRmWv0hucykTlxtZ3X" target="_blank">
+	  <img class="social-media-icon" src="{% static 'blog/images/spotify.png' %}">
+	</a>
+	<a href="https://www.youtube.com/channel/UC7GniGLQNO90CEBg3Jj5asg" target="_blank">
+	  <img class="social-media-icon2" src="{% static 'blog/images/youtube.png' %}">
+	</a>
+	<a href="https://enfantperdu.bandcamp.com/" target="_blank">
+	  <img class="social-media-icon" src="{% static 'blog/images/bandcamp.png' %}">
+	</a>
+	<a href="https://soundcloud.com/enfantperduperdu" target="_blank">
+	  <img class="social-media-icon2" src="{% static 'blog/images/soundcloud.png' %}">
+	</a>
+	<a href="mailto:enfantperduperdu@gmail.com" target="_blank">
+	  <img class="social-media-icon" src="{% static 'blog/images/email.png' %}">
+	</a>
+    </div>
+  </div>
+</body>

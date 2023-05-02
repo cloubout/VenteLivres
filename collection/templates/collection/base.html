@@ -1,0 +1,16 @@
+{% load static %}
+
+{% include 'blog/parts/header.html'%}
+
+
+<div id="main">
+  <!-- <div class="row"> -->
+  <!--   <div class="col-md-8"> -->
+      {% block listing %}
+      {% endblock %}
+  <!--   </div> -->
+    <!-- </div> -->
+  <div style="clear:both"></div>
+</div>
+
+{% include 'blog/parts/footer.html'%}
