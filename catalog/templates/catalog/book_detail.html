@@ -1,0 +1,10 @@
+{% extends 'catalog/base.html' %}
+
+{% block listing %}
+{% if book %}
+  <h2>{{book.title}}</h2>
+  <div class="pub_date">"{{book.pub_date}}</div>
+  <div class="synopsis">{{book.synopsis}}</div>
+  <div class="author_name">{{book.author.first_name}} {{book.author.last_name}}</div>
+{% endif %}
+{% endblock %}
