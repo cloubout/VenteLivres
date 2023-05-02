@@ -1,8 +1,0 @@
-from django.urls import path
-from . import views 
-
-urlpatterns = [
-    path('catalog', views.HomeView.as_view(), name='collection'),
-    path('catalog/<int:page>', views.CatalogView.as_view(), name='collection'),
-    path('<int:book_id>', views.bookView)
-]

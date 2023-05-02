@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 from .exceptions import BookNotAvailable
 
-from collection.models import Book
+from catalog.models import Book
 
 class Member(models.Model):
     first_name = models.CharField(max_length=100)

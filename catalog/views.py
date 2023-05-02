@@ -14,7 +14,7 @@ class HomeView(generic.ListView):
     """
     View books taht are chosen for the week cover
     """
-    template_name = "home.html"
+    template_name = "collection/home.html"
     model = Book
 
     def get_queryset(self):
@@ -24,7 +24,7 @@ class CatalogView(generic.ListView):
     """
     View of the catalog
     """
-    template_name = "catalog.html"
+    template_name = "collection/catalog.html"
     model = Book
 
     def get_queryset(self):

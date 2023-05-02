@@ -1,2 +1,0 @@
-class BookNotAvailable(Exception):
-    pass 
