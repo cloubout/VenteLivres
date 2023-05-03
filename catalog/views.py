@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.conf import settings
+import datetime
 
 from .models import Book, Author
 from members.models import Comment
@@ -31,7 +32,7 @@ class CatalogView(generic.ListView):
     def get_queryset(self):
         return Book.objects.order_by('-rating').all()
 
-def searchCatalogView(request):
+def search_in_catalog(request):
     num_res = 0
     page_books = []
     if request.method == 'GET':
@@ -39,25 +40,35 @@ def searchCatalogView(request):
     else:
         form = SearchForm(request.POST)
         if form.is_valid():
+            search_list = Book.objects.all()
             genre = form.cleaned_data['genre']
             after_year = form.cleaned_data['after_year']
             before_year = form.cleaned_data['before_year']
             text = form.cleaned_data['text']
             page = form.cleaned_data['page']
-            search_list = Book.objects.filter(genre=genre, pub_date__year_gte=after_year, pub_date__year_lte=before_year, title__icontains=text).all() 
+
+            if genre != "AL":
+                search_list = search_list.filter(genre=genre).all()
+            if after_year is None:
+                after_year = 0
+            if before_year is None:
+                before_year = datetime.date.today().year
+            if text is None:
+                text = ""
+            if page is None:
+                page = 1
+            search_list = search_list.filter(pub_date__year__gte=after_year, pub_date__year__lte=before_year, title__icontains=text).all()
             num_res = len(search_list)
             max_page = num_res//25
             if num_res%25 > 0:
                 max_page+=1
-            if page > max_page:
-                raise NoMoreResults
+            if page < max_page:
+                page_books = searched_list[25*(page-1):25*page]
             elif page == max_page:
                 page_books = searched_list[25*(page-1):25*(page-1)+(all_books%25)]
-            else:
-                page_books = searched_list[25*(page-1):25*page]
     return render(request, "catalog/search.html", {"form": form, "page_books": page_books, "num_results": num_res})
     
-def bookView(request, book_id):
+def book_description(request, book_id):
     """
     View for the description of a Book
     """
