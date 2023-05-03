@@ -13,11 +13,20 @@
     {{ form.before_year }}
     <label class="form-label" for="{{ form.text.auto_id }}">{{ form.text.label }}</label>
     {{ form.text }}
+    <label class="form-label" for="{{ form.lowest_price.auto_id }}">{{ form.lowest_price.label }}</label>
+    {{ form.lowest_price }}
+    <label class="form-label" for="{{ form.highest_price.auto_id }}">{{ form.highest_price.label }}</label>
+    {{ form.highest_price }}
+    <label class="form-label" for="{{ form.sort_by.auto_id }}">{{ form.sort_by.label }}</label>
+    {{ form.sort_by }}
     <label class="form-label" for="{{ form.page.auto_id }}">{{ form.page.label }}</label>
     {{ form.page }}
     <div class="form-actions">
       <button class="btn btn-default" type="submit">Search</button>
     </div>
   </form>
+  <div class="num-results">
+    <p>There are {{ num_results }} to your search
+  </div>
 </div>
 {% endblock %}

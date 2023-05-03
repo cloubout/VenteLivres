@@ -31,6 +31,14 @@ class Publisher(models.Model):
     def __str__(self):
         return self.name
 
+class SortingMethods(models.TextChoices):
+    PUBLICATION_DATE_DOWN = "-pub_date", _("Publication date new to old")
+    PUBLICATION_DATE_UP = "pub_date", _("Publication date old to new")
+    TITLE_AZ = "title", _("Title A to Z")
+    TITLE_ZA = "-title", _("Title Z to A")
+    PRICE_UP = "sell_price", _("Sell price up")
+    PRICE_DOWN = "-sell_price", _("Sell price down")
+    
 class Genres(models.TextChoices):
     ALL = "AL", _("All")
     FANTASY = "FA", _("Fantasy")
@@ -82,7 +90,7 @@ class Book(models.Model):
     booked = models.PositiveIntegerField()
     
     class Meta:
-        ordering = ["-title"]
+        ordering = ["-pub_date"]
     
     def __str__(self):
         return self.title
